@@ -1,0 +1,318 @@
+<?xml version="1.0"?><!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+<head>
+	<link name="NotoSans" type="font" subtype="truetype" src="${nsfont.NotoSans_Regular}" src-bold="${nsfont.NotoSans_Bold}" src-italic="${nsfont.NotoSans_Italic}" src-bolditalic="${nsfont.NotoSans_BoldItalic}" bytes="2" />
+	<#if .locale == "zh_CN">
+		<link name="NotoSansCJKsc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKsc_Regular}" src-bold="${nsfont.NotoSansCJKsc_Bold}" bytes="2" />
+	<#elseif .locale == "zh_TW">
+		<link name="NotoSansCJKtc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKtc_Regular}" src-bold="${nsfont.NotoSansCJKtc_Bold}" bytes="2" />
+	<#elseif .locale == "ja_JP">
+		<link name="NotoSansCJKjp" type="font" subtype="opentype" src="${nsfont.NotoSansCJKjp_Regular}" src-bold="${nsfont.NotoSansCJKjp_Bold}" bytes="2" />
+	<#elseif .locale == "ko_KR">
+		<link name="NotoSansCJKkr" type="font" subtype="opentype" src="${nsfont.NotoSansCJKkr_Regular}" src-bold="${nsfont.NotoSansCJKkr_Bold}" bytes="2" />
+	<#elseif .locale == "th_TH">
+		<link name="NotoSansThai" type="font" subtype="opentype" src="${nsfont.NotoSansThai_Regular}" src-bold="${nsfont.NotoSansThai_Bold}" bytes="2" />
+	</#if>
+    <macrolist>
+        <macro id="nlheader">
+          <table width="100%">
+            <tr>
+            <td align="left">
+               <table class="header" style="width: 50%;">
+              <tr>
+	<td rowspan="3" style="padding: 0px; margin-top:-10px;"><img src="${'https://5898295.app.netsuite.com/core/media/media.nl?id=3897&amp;c=5898295&amp;h=d84c9437d065122041a5'}" style="width:236.8px;height:52px;"/></td> 
+	</tr>
+	</table>
+              </td>
+
+            <td align="right">
+              <table>
+                <tr><td style=" font-size: 28pt;margin-right:0px;">Invoice</td></tr>
+              </table>
+              </td>
+            </tr>
+          </table>
+          <table margin-top="10px" top="-10px" width="100%">
+            <tr>
+            <td align="left">
+                <table>
+             <tr>
+              <td style="padding: 0px;">${companyInformation.companyName}<br />${companyInformation.addressText}<br />${companyInformation.phone}</td>
+              </tr>
+          </table>
+              </td>
+              <td align="right">
+              <table>
+                <tr line-height="75%">
+                <td align="left">Invoice #</td><td align="right">${record.tranid}</td>
+                </tr>
+                <tr line-height="75%">
+                <td align="left">Date</td><td align="right">${record.trandate}</td>
+                </tr>
+                <tr line-height="75%">
+                <td align="left">Due Date</td><td align="right">${record.duedate}</td>
+                </tr>
+                <tr line-height="75%">
+                <td align="left">Account #</td><td align="right">${record.entity.entityid}</td>
+                </tr>
+                <tr line-height="75%">
+                <td align="left">Customer PO #</td><td align="right">${record.otherrefnum}</td>
+                </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </macro>
+        <macro id="nlfooter">
+
+            <table class="footer" style="width: 100%;margin-top:10px"><tr>
+	<td colspan="7">Remittance Address:  135 Columbia, Suite 201 Aliso Viejo, CA 92656</td>
+	<td align="right"><pagenumber/> of <totalpages/></td>
+	</tr>
+    <tr><td colspan="7">For assistance or additional information on this invoice, please email AR@exsomed.com</td></tr>
+          </table>
+        </macro>
+    </macrolist>
+    <style type="text/css">* {
+		<#if .locale == "zh_CN">
+			font-family: NotoSans, NotoSansCJKsc, sans-serif;
+		<#elseif .locale == "zh_TW">
+			font-family: NotoSans, NotoSansCJKtc, sans-serif;
+		<#elseif .locale == "ja_JP">
+			font-family: NotoSans, NotoSansCJKjp, sans-serif;
+		<#elseif .locale == "ko_KR">
+			font-family: NotoSans, NotoSansCJKkr, sans-serif;
+		<#elseif .locale == "th_TH">
+			font-family: NotoSans, NotoSansThai, sans-serif;
+		<#else>
+			font-family: Helvetica, sans-serif;
+		</#if>
+		}
+		table {
+			font-size: 9pt;
+			table-layout: fixed;
+		}
+      body{
+        line-height : 12pt;
+      }
+        #headers {
+            font-weight: bold;
+            font-size: 9pt;
+            vertical-align: middle;
+            padding: 4px 5px 2px;
+            background-color: #e3e3e3;
+            color: #333333;
+        }
+      #headers1 {
+            font-weight: bold;
+            font-size: 9pt;
+            vertical-align: middle;
+            padding: 4px 2px 2px;
+            background-color: #e3e3e3;
+            color: #333333;
+        }
+
+		td p { align:left }
+        b {
+            font-weight: bold;
+            color: #333333;
+        }
+        table.header td {
+            padding: 0px;
+            font-size: 10pt;
+        }
+        table.footer td {
+            padding: 0px;
+            font-size: 8pt;
+        }
+        table.itemtable th {
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+        table.body td {
+            padding-top: 1px;
+        }
+        table.total {
+            page-break-inside: avoid;
+        }
+        tr.totalrow {
+            background-color: #e3e3e3;
+            line-height: 100%;
+        }
+        td.totalboxtop {
+            font-size: 12pt;
+            background-color: #e3e3e3;
+        }
+        td.addressheader {
+            font-size: 8pt;
+            padding-top: 6px;
+            padding-bottom: 2px;
+        }
+        td.address {
+            padding-top: 0px;
+        }
+        td.totalboxmid {
+            font-size: 28pt;
+            padding-top: 20px;
+            background-color: #e3e3e3;
+        }
+        td.totalboxbot {
+            background-color: #e3e3e3;
+            font-weight: bold;
+        }
+        span.title {
+            font-size: 28pt;
+        }
+        span.number {
+            font-size: 16pt;
+        }
+        span.itemname {
+            font-weight: bold;
+            line-height: 150%;
+        }
+        hr {
+            width: 100%;
+            color: #d3d3d3;
+            background-color: #d3d3d3;
+            height: 1px;
+        }
+      p.itemname1{
+        margin-top:80px;
+      }
+      div.test{
+        border-style: solid;
+		border: 1px solid;
+		border-color: gray;
+		width: 4in;
+ 		height: 1in;
+        margin-top:-5px;
+        display:block;
+        margin-top:-20px;
+      }
+</style>
+</head>
+<body header="nlheader" header-height="17%" footer="nlfooter" footer-height="20pt" padding="0.5in 0.5in 0.5in 0.5in" size="Letter">
+  <table width="100%" top="-20px">
+     <tr>
+       <td align="right" colspan="10"><p style="width: 100%; margin-top: 10px;"><b>${record.billaddress@label}</b><br /><span style="width:50%;align:right;">${record.billaddress}</span></p></td>
+       <td colspan="1">&nbsp;</td>
+       <td align="left" colspan="9"><p style="width: 100%; padding: 0px; margin-top: 10px;align:left;"><b>${record.shipaddress@label}</b><br /><span width="50%">${record.shipaddress}</span></p></td>
+     </tr>
+  </table>
+
+  <table class="body" style="width: 100%; margin-top: 10px;">
+    <tr id="headers">
+    <td width="50%" >Distributor Sales Rep</td>
+    <td width="25%">Shipping Method</td>
+    <td width="25%">Payment Terms</td>
+	</tr>
+    <tr>
+    <td width="50%">${record.custbody_vr_distsalesrep}</td>
+    <td width="25%">${record.shipmethod}</td>
+    <td width="25%">${record.terms}</td>
+    </tr>
+  </table>
+
+  <table class="body" style="width: 100%; margin-top: 10px;">
+    <tr id="headers">
+	<td width="50%">Surgeon</td>
+    <td width="50%">Surgery / Shipping Date</td>
+	</tr>
+    <tr>
+	<td width="50%">${record.custbody_vr_surgeon}</td>
+    <td width="50%">${record.custbody_vr_surgerydate}</td>
+    </tr>
+	</table>
+<#if record.item?has_content>
+
+<table  style="width: 100%; margin-top: 10px;"><!-- start items --><#list record.item as item><#if item_index==0>
+<thead>
+	<tr id="headers1">
+	<th width="20%" padding-left="3px">Item</th>
+    <th width="35%" padding-left="3px">Description</th>
+	<th width="15%">Quantity</th>
+	<th width="15%" align="right" padding-right="5px">Price</th>
+	<th width="15%" align="right" padding-right="5px">Extended Price</th>
+	</tr>
+</thead>
+</#if>
+  <tr line-height="75%">
+    <td width="20%"><span class="itemname">${item.item}</span></td>
+    <td width="35%">${item.description}</td>
+	<td width="15%" margin-left="10px">${item.quantity}</td>
+	<td width="15%" align="right" padding-right="5px">${item.rate}</td>
+	<td width="15%" align="right" padding-right="5px">${item.amount}</td>
+	</tr>
+  <tr border-bottom="1px" border-color="#d3d3d3" line-height="75%">
+    <td colspan="4" padding-left="6px">
+        <#if item.inventorydetail?length != 0>
+        <#assign invdetails = item.inventorydetail?split("<br />") />
+        <#list invdetails as detail>
+          <#if item.isserial = "F">
+            <#if detail?index_of(',') gt 0>
+              Lot/Serial#: ${detail?split(',')[0]} - Qty: ${detail?split('(')[1]?replace(')','')}
+            <#else>
+              Lot/Serial#: ${detail?replace('(',' - Qty: ')?replace(')','')}
+            </#if>
+          <#else>
+            Lot/Serial#: ${detail?split(',')[0]}
+          </#if>
+          <br />
+        </#list>
+      </#if>
+    </td>
+  </tr>
+
+	</#list><!-- end items --></table>
+
+  </#if>
+  <#assign shipcost=0>
+  <#assign shippingcost=record.altshippingcost>
+    <#if shippingcost?has_content>
+      <#assign shipcost=record.altshippingcost>
+        <#else>
+          <#assign shipcost=0>
+      </#if>
+<table class="total" style="width: 100%; margin-top: 10px;"><tr>
+	<td colspan="4">&nbsp;</td>
+	<td align="right"><b>${record.subtotal@label}</b></td>
+	<td align="right">${record.subtotal}</td>
+	</tr>
+	<tr>
+	<td colspan="4">&nbsp;</td>
+	<td align="right"><b>Shipping Cost</b></td>
+    <#if record.shippingcost?length != 0>
+	  <td align="right">${record.shippingcost}</td>
+    <#else>
+      <td align="right">$0.00</td>
+    </#if>
+	</tr>
+	<tr>
+	<td colspan="4">&nbsp;</td>
+	<td align="right"><b>Tax</b></td>
+	<td align="right">${record.taxtotal}</td>
+	</tr>
+	<tr class="totalrow">
+	<td background-color="#ffffff" colspan="4">&nbsp;</td>
+	<td align="right"><b>${record.total@label}</b></td>
+	<td align="right">${record.total}</td>
+	</tr>
+</table>
+
+      <#if record.message?length != 0>
+      <table>
+      <tr>
+        <td>
+            <b>Customer Message</b>
+           <div class="test">
+			<table>
+              <tr><td>${record.message}</td></tr>
+             </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+    </#if>
+
+</body>
+</pdf>
